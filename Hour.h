@@ -10,13 +10,20 @@ class Hour {
 private:
     int hour;
     int minute;
+    bool disabled;
+
 public:
     //setter
     void setHour(int h);
     void setMinute(int m);
+    void setDisabled(bool disabled);
     //getter
-    int getHour();
-    int getMinute();
+    const int getHour() const;
+    const int getMinute() const;
+    const bool isDisabled() const;
+    //constructor
+    Hour(int hour, int minute): hour(hour), minute(minute), disabled(false){};
+    Hour(){disabled=true;}
 };
 
 

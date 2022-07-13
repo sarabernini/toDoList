@@ -19,10 +19,20 @@ void Hour::setMinute(int m) {
         std::cout<<"minute need to be between 0-59"<<std::endl;
 }
 
-int Hour::getHour() {
+const int Hour::getHour() const {
     return hour;
 }
 
-int Hour::getMinute() {
+const int Hour::getMinute() const{
     return minute;
 }
+
+const bool Hour::isDisabled() const {
+    return disabled;
+}
+
+void Hour::setDisabled(bool disabled) {
+    Hour::disabled = disabled;
+}
+
+

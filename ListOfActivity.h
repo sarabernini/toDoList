@@ -10,7 +10,7 @@
 
 class ListOfActivity {
 private:
-    std::list<Activity> listOfActivity;
+    std::list<Activity*> listOfActivity;
 public:
     void addActivity();
     void removeActivity();

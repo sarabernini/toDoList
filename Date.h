@@ -12,6 +12,18 @@ private:
     int month;
     int year;
 public:
+    //setter
+    void setDay(int day);
+    void setMonth(int month);
+    void setYear(int year);
+    //getter
+    int getDay() const;
+    int getMonth() const;
+    int getYear() const;
+
+    void setData(int y, int m,int d);
+private:
+    bool isLeapYear(int y);
 
 };
 

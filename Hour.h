@@ -10,7 +10,13 @@ class Hour {
 private:
     int hour;
     int minute;
-    int second;
+public:
+    //setter
+    void setHour(int h);
+    void setMinute(int m);
+    //getter
+    int getHour();
+    int getMinute();
 };
 
 

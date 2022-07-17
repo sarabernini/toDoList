@@ -11,6 +11,11 @@ private:
     int hour;
     int minute;
     bool disabled;
+    bool valid=true;
+public:
+    bool isValid() const;
+
+    void setValid(bool valid);
 
 public:
     //setter
@@ -22,8 +27,14 @@ public:
     const int getMinute() const;
     const bool isDisabled() const;
     //constructor
-    Hour(int hour, int minute): hour(hour), minute(minute), disabled(false){};
-    Hour(){disabled=true;}
+    Hour(int hour, int minute):disabled(false){
+        setHour(hour);
+        setMinute(minute);
+    };
+    Hour(){
+        disabled=true;
+        hour=0;
+        minute=0;}
 };
 
 

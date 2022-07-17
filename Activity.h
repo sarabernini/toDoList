@@ -11,32 +11,32 @@
 
 class Activity {
 private:
+
     std::string description;
     Hour hour;
     Date date;
+    bool checked;
+
 public:
+
+    //getter
     const std::string &getDescription() const;
-
-    void setDescription(const std::string &description);
-
     const Hour &getHour() const;
-
-    void setHour(const Hour &hour);
-
     const Date &getDate() const;
-
-    void setDate(const Date &date);
-
     bool isChecked() const;
 
+    //setter
     void setChecked(bool checked);
+    void setDescription(const std::string &description);
+    void setHour(const Hour &hour);
+    void setDate(const Date &date);
 
-private:
-    bool checked;
-public:
+    //constructor
     explicit Activity(std::string description,bool checked=false):description(std::move(description)),checked(checked),hour(),date(){};
     Activity(std::string description, int h, int min, int y, int m, int d,bool checked=false):
-    description(std::move(description)),checked(checked),hour(h, min),date(y,m,d){};
+            description(std::move(description)),checked(checked),hour(h, min),date(y,m,d){};
+
+    bool operator==(const Activity&right);
 
 };
 

@@ -6,17 +6,25 @@
 #include "Hour.h"
 
 void Hour::setHour(int h) {
-    if (h>=0 && h<24)
-        hour=h;
-    else
-        std::cout<<"hour need to be between 0-23"<<std::endl;
+    if (h>=0 && h<24) {
+        hour = h;
+        disabled=false;
+    } else {
+        valid = false;
+        disabled=true;
+        std::cout << "hour need to be between 0-23" << std::endl;
+    }
 }
 
 void Hour::setMinute(int m) {
-    if (m>=0 && m<60)
-        minute=m;
-    else
-        std::cout<<"minute need to be between 0-59"<<std::endl;
+    if (m>=0 && m<60) {
+        minute = m;
+        disabled=false;
+    }else {
+        valid = false;
+        disabled=true;
+        std::cout << "minute need to be between 0-59" << std::endl;
+    }
 }
 
 const int Hour::getHour() const {
@@ -33,6 +41,14 @@ const bool Hour::isDisabled() const {
 
 void Hour::setDisabled(bool disabled) {
     Hour::disabled = disabled;
+}
+
+bool Hour::isValid() const {
+    return valid;
+}
+
+void Hour::setValid(bool valid) {
+    Hour::valid = valid;
 }
 
 

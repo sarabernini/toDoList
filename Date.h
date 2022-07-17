@@ -12,6 +12,11 @@ private:
     int month;
     int year;
     bool disabled;
+    bool valid=false;
+public:
+    bool isValid() const;
+
+    void setIsValid(bool isValid);
 
 public:
 
@@ -19,7 +24,7 @@ public:
     void setDay(int day);
     void setMonth(int month);
     void setYear(int year);
-    void setDate(int y, int m,int d);
+    bool setDate(int y, int m,int d);
     void setDisabled(bool disabled);
 
     //getter
@@ -29,10 +34,14 @@ public:
     bool isDisabled() const;
 
     //constructor
-    Date(){disabled=true;}
+    Date(){
+        disabled=true;
+        year=0;
+        month=0;
+        day=0;
+    }
     Date(int y, int m, int d): disabled(false){ setDate(y,m,d);};
 
-private:
     bool isLeapYear(int y);
     bool isValidatedDate(int y, int m, int d);
 };

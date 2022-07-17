@@ -10,29 +10,36 @@
 #include "Activity.h"
 
 class ListOfActivity {
+
 private:
     std::list<Activity*> listOfActivity;
     std::fstream file;
 public:
-    void addActivity( const Activity& activity);
 
-    void removeActivity(const Activity& activity);
+    void writeActivityToFile();
+    void readActivityToFile();
+    void removeActivity(const std::string& description);
+    void addCheck(const std::string& description);
+    void removeCheck( const std::string& description);
+    void printAllActivities();
+    void printTodayActivities();
+    void printActivity(const Activity* a);
+    Activity* findActivity(const std::string& description);
+    void addActivity(Activity& a);
 
-    void addCheck();
 
-    void removeCheck();
-
-
-
+    //constructor
     ListOfActivity(){
         file.open("list_of_activity.txt",std::ios::in | std::ios::app);
+        readActivityToFile();
     };
 
+    //destructor
     virtual ~ListOfActivity() {
-        file.close();
         for(auto it : listOfActivity){
             delete it;
         };
+        file.close();
     }
 
 };

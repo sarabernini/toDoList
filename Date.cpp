@@ -33,14 +33,20 @@ void Date::setYear(int year) {
 }
 
 //this method checks if a date is legal then insert the date
-void Date::setDate(int y, int m, int d) {
+bool Date::setDate(int y, int m, int d) {
 
     if(isValidatedDate(y,m,d)){
+        valid=true;
         year = y;
         month = m;
         day = d;
+        disabled=false;
+        return true;
     }else{
+        valid=false;
+        disabled=true;
         std::cout<<"inserted date is not valid"<<std::endl;
+        return false;
     }
 }
 
@@ -56,26 +62,35 @@ bool Date::isLeapYear(int y) {
 }
 
 bool Date::isValidatedDate(int y, int m, int d) {
+    //data disabled
+    if(disabled && y == 0 && m == 0 && d == 0)
+        return true;
+
+    //data not disabled
     auto now = Clock::now();
     std::time_t now_c = Clock::to_time_t(now);
     struct tm *parts = std::localtime(&now_c);
 
-    if((y>(1900+ parts->tm_year && y<2100)&& m<13 && m>0 && d>0) ||
-       (y==(1900 + parts->tm_year) && m>(1+ parts->tm_mon)) && m<13 ||
-       (y==(1900 + parts->tm_year) && m==(1+ parts->tm_mon) && d>=parts->tm_mday)){
+    int actualYear=1900+parts->tm_year;
+    int actualMonth=1+ parts->tm_mon;
+    int actualDay=parts->tm_mday;
+
+    if((y>actualYear && y<2100 && m<13 && m>0 && d>0) ||
+       (y==actualYear && m>actualMonth && m<13 && d>0) ||
+       (y==actualYear && m==actualMonth && d>=actualDay)){
+
         if(m==2){
-            if((isLeapYear(y)&&d<=29) || !isLeapYear(y)&&d<=28) {
+            if((isLeapYear(y)&&d<=29) || !isLeapYear(y)&&d<=28)
                 return true;
-            }
         }else if (m==1 || m==3 || m==5 ||m==7 || m==8 || m==10 || m==12) {
-            if (d <= 31) {
+            if (d <= 31)
                 return true;
-            }
-        }else if (d<=30){
+        }else if (d<=30)
             return true;
-        }else
+        else
             return false;
     }
+    return false;
 }
 
 bool Date::isDisabled() const {
@@ -85,5 +100,15 @@ bool Date::isDisabled() const {
 void Date::setDisabled(bool disabled) {
     Date::disabled = disabled;
 }
+
+bool Date::isValid() const {
+    return valid;
+}
+
+void Date::setIsValid(bool valid) {
+    Date::valid = valid;
+}
+
+
 
 

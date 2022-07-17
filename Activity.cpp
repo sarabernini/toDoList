@@ -35,3 +35,9 @@ bool Activity::isChecked() const {
 void Activity::setChecked(bool checked) {
     Activity::checked = checked;
 }
+
+bool Activity::operator==(const Activity&right){
+    return description == right.description;
+}
+
+

@@ -15,17 +15,17 @@ private:
 public:
     bool isValid() const;
 
-    void setValid(bool valid);
+    void setValid(bool v);
 
 public:
     //setter
     void setHour(int h);
     void setMinute(int m);
-    void setDisabled(bool disabled);
+    void setDisabled(bool d);
     //getter
-    const int getHour() const;
-    const int getMinute() const;
-    const bool isDisabled() const;
+    int getHour() const;
+    int getMinute() const;
+    bool isDisabled() const;
     //constructor
     Hour(int hour, int minute):disabled(false){
         setHour(hour);

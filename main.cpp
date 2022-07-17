@@ -41,7 +41,7 @@ do {
             }while(c!=0 && c!=1);
             Date* date=new Date();
             if (c==0) {
-                bool x = false;
+                bool x;
                 do {
                     std::cout << "insert day of activity" << std::endl;
                     std::cin >> day;
@@ -60,7 +60,7 @@ do {
             }while(c!=0 && c!=1);
             Hour* hour=new Hour();
             if (c==0) {
-                bool x = false;
+                bool x;
                 do {
                     std::cout << "insert hour of activity" << std::endl;
                     std::cin >> h;

@@ -8,32 +8,29 @@ const std::string &Activity::getDescription() const {
     return description;
 }
 
-void Activity::setDescription(const std::string &description) {
-    Activity::description = description;
-}
 
 const Hour &Activity::getHour() const {
     return hour;
 }
 
-void Activity::setHour(const Hour &hour) {
-    Activity::hour = hour;
+void Activity::setHour(const Hour &h) {
+    Activity::hour = h;
 }
 
 const Date &Activity::getDate() const {
     return date;
 }
 
-void Activity::setDate(const Date &date) {
-    Activity::date = date;
+void Activity::setDate(const Date &d) {
+    Activity::date = d;
 }
 
 bool Activity::isChecked() const {
     return checked;
 }
 
-void Activity::setChecked(bool checked) {
-    Activity::checked = checked;
+void Activity::setChecked(bool c) {
+    Activity::checked = c;
 }
 
 bool Activity::operator==(const Activity&right){

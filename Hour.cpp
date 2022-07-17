@@ -27,28 +27,28 @@ void Hour::setMinute(int m) {
     }
 }
 
-const int Hour::getHour() const {
+int Hour::getHour() const {
     return hour;
 }
 
-const int Hour::getMinute() const{
+int Hour::getMinute() const{
     return minute;
 }
 
-const bool Hour::isDisabled() const {
+bool Hour::isDisabled() const {
     return disabled;
 }
 
-void Hour::setDisabled(bool disabled) {
-    Hour::disabled = disabled;
+void Hour::setDisabled(bool d) {
+    Hour::disabled = d;
 }
 
 bool Hour::isValid() const {
     return valid;
 }
 
-void Hour::setValid(bool valid) {
-    Hour::valid = valid;
+void Hour::setValid(bool v) {
+    Hour::valid = v;
 }
 
 

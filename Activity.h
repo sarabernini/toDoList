@@ -26,10 +26,9 @@ public:
     bool isChecked() const;
 
     //setter
-    void setChecked(bool checked);
-    void setDescription(const std::string &description);
-    void setHour(const Hour &hour);
-    void setDate(const Date &date);
+    void setChecked(bool c);
+    void setHour(const Hour &h);
+    void setDate(const Date &d);
 
     //constructor
     explicit Activity(std::string description,bool checked=false):description(std::move(description)),checked(checked),hour(),date(){};

@@ -13,7 +13,13 @@ class ListOfActivity {
 
 private:
     std::list<Activity*> listOfActivity;
+public:
+    const std::list<Activity *> &getListOfActivity() const;
+
+private:
     std::fstream file;
+
+    void printActivity(const Activity* a);
 public:
 
     void writeActivityToFile();
@@ -23,9 +29,9 @@ public:
     void removeCheck( const std::string& description);
     void printAllActivities();
     void printTodayActivities();
-    void printActivity(const Activity* a);
-    Activity* findActivity(const std::string& description);
     void addActivity(Activity& a);
+
+    Activity* findActivity(const std::string& description);
 
 
     //constructor
@@ -36,9 +42,8 @@ public:
 
     //destructor
     virtual ~ListOfActivity() {
-        for(auto it : listOfActivity){
+        for(auto it : listOfActivity)
             delete it;
-        };
         file.close();
     }
 

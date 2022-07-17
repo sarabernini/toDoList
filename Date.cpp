@@ -20,17 +20,6 @@ int Date::getYear() const {
     return year;
 }
 
-void Date::setDay(int day) {
-    Date::day = day;
-}
-
-void Date::setMonth(int month) {
-    Date::month = month;
-}
-
-void Date::setYear(int year) {
-    Date::year = year;
-}
 
 //this method checks if a date is legal then insert the date
 bool Date::setDate(int y, int m, int d) {
@@ -52,9 +41,7 @@ bool Date::setDate(int y, int m, int d) {
 
 //check if a year is leap
 bool Date::isLeapYear(int y) {
-    auto now = Clock::now();
-    std::time_t now_c = Clock::to_time_t(now);
-    struct tm *parts = std::localtime(&now_c);
+
     if(y%4==0 && y%100!=0 || y%400==0)
         return true;
     else
@@ -97,17 +84,15 @@ bool Date::isDisabled() const {
     return disabled;
 }
 
-void Date::setDisabled(bool disabled) {
-    Date::disabled = disabled;
+void Date::setDisabled(bool d) {
+    Date::disabled = d;
 }
 
 bool Date::isValid() const {
     return valid;
 }
 
-void Date::setIsValid(bool valid) {
-    Date::valid = valid;
-}
+
 
 
 

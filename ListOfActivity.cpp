@@ -150,6 +150,10 @@ void ListOfActivity::printActivity(const Activity* a) {
     std::cout<<"_______________"<<std::endl;
 }
 
+const std::list<Activity *> &ListOfActivity::getListOfActivity() const {
+    return listOfActivity;
+}
+
 
 
 

@@ -8,30 +8,27 @@
 
 class Date {
 private:
-    int day;
-    int month;
-    int year;
+    int day{};
+    int month{};
+    int year{};
     bool disabled;
     bool valid=false;
-public:
-    bool isValid() const;
 
-    void setIsValid(bool isValid);
+    bool isLeapYear(int y);
+    bool isValidatedDate(int y, int m, int d);
 
 public:
 
     //setter
-    void setDay(int day);
-    void setMonth(int month);
-    void setYear(int year);
     bool setDate(int y, int m,int d);
-    void setDisabled(bool disabled);
+    void setDisabled(bool d);
 
     //getter
     int getDay() const;
     int getMonth() const;
     int getYear() const;
     bool isDisabled() const;
+    bool isValid() const;
 
     //constructor
     Date(){
@@ -42,8 +39,7 @@ public:
     }
     Date(int y, int m, int d): disabled(false){ setDate(y,m,d);};
 
-    bool isLeapYear(int y);
-    bool isValidatedDate(int y, int m, int d);
+
 };
 
 

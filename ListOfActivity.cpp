@@ -145,8 +145,12 @@ void ListOfActivity::printActivity(const Activity* a) {
         std::cout<<"[ ] "<<a->getDescription()<<std::endl;
     if(!a->getDate().isDisabled())
         std::cout<<"     "<<a->getDate().getDay()<<"/"<<a->getDate().getMonth()<<"/"<<a->getDate().getYear()<<std::endl;
-    if(!a->getHour().isDisabled())
-        std::cout<<"     "<<a->getHour().getHour()<<":"<<a->getHour().getMinute()<<std::endl;
+    if(!a->getHour().isDisabled()) {
+        if (a->getHour().getMinute() < 10)
+            std::cout << "     " << a->getHour().getHour() << ":0" << a->getHour().getMinute() << std::endl;
+        else
+            std::cout << "     " << a->getHour().getHour() << ":" << a->getHour().getMinute() << std::endl;
+    }
     std::cout<<"_______________"<<std::endl;
 }
 

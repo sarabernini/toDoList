@@ -54,17 +54,10 @@ bool Date::isValidatedDate(int y, int m, int d) {
         return true;
 
     //data not disabled
-    auto now = Clock::now();
-    std::time_t now_c = Clock::to_time_t(now);
-    struct tm *parts = std::localtime(&now_c);
 
-    int actualYear=1900+parts->tm_year;
-    int actualMonth=1+ parts->tm_mon;
-    int actualDay=parts->tm_mday;
-
-    if((y>actualYear && y<2100 && m<13 && m>0 && d>0) ||
-       (y==actualYear && m>actualMonth && m<13 && d>0) ||
-       (y==actualYear && m==actualMonth && d>=actualDay)){
+    if((y>currentYear() && y<2100 && m<13 && m>0 && d>0) ||
+       (y==currentYear() && m>currentMonth() && m<13 && d>0) ||
+       (y==currentYear() && m==currentMonth() && d>=currentDay())){
 
         if(m==2){
             if((isLeapYear(y)&&d<=29) || !isLeapYear(y)&&d<=28)
@@ -90,6 +83,30 @@ void Date::setDisabled(bool d) {
 
 bool Date::isValid() const {
     return valid;
+}
+
+int Date::currentDay() {
+    auto now = Clock::now();
+    std::time_t now_c = Clock::to_time_t(now);
+    struct tm *parts = std::localtime(&now_c);
+
+    return parts->tm_mday;
+}
+
+int Date::currentMonth() {
+    auto now = Clock::now();
+    std::time_t now_c = Clock::to_time_t(now);
+    struct tm *parts = std::localtime(&now_c);
+
+    return 1+ parts->tm_mon;
+}
+
+int Date::currentYear() {
+    auto now = Clock::now();
+    std::time_t now_c = Clock::to_time_t(now);
+    struct tm *parts = std::localtime(&now_c);
+
+    return 1900+parts->tm_year;
 }
 
 

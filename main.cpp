@@ -1,12 +1,14 @@
 #include <iostream>
 #include "Activity.h"
 #include "ListOfActivity.h"
+#include "Date.h"
 
 int main() {
 
 ListOfActivity list;
 int n;
 bool exit=false;
+
 
 do {
     std::cout << "select an action:" << std::endl;
@@ -17,7 +19,7 @@ do {
     std::cout << "5.check activity" << std::endl;
     std::cout << "6.Uncheck activity" << std::endl;
     std::cout << "7.Save" << std::endl;
-    std::cout << "8.exit" << std::endl;
+    std::cout << "8.Save & exit" << std::endl;
     std::cin >> n;
 
     switch (n) {
@@ -31,9 +33,9 @@ do {
         {
             std::string description;
             int day, month, year, h, m;
-            int c;
+            int c,b;
             std::cout<<"insert description of the activity"<<std::endl;
-            std::cin>>description;
+           std::getline(std::cin >> std::ws,description);
             auto* a= new Activity(description);
             do {
                 std::cout << "press 0 if you want insert a date else, press 1 " << std::endl;
@@ -41,17 +43,29 @@ do {
             }while(c!=0 && c!=1);
             Date* date=new Date();
             if (c==0) {
-                bool x;
+                bool x =false;
                 do {
-                    std::cout << "insert day of activity" << std::endl;
-                    std::cin >> day;
-                    std::cout << "insert month of activity" << std::endl;
-                    std::cin >> month;
-                    std::cout << "insert year of activity" << std::endl;
-                    std::cin >> year;
-                    x=date->setDate(year,month,day);
-                }while (!x);
-                date->setDisabled(false);
+                    std::cout << "press 0 if is a today activity, else press 1 " << std::endl;
+                    std::cin >> b;
+                }while(b!=0 && b!=1);
+                if(b==0){
+                    day=Date::currentDay();
+                    month=Date::currentMonth();
+                    year=Date::currentYear();
+                    x=true;
+                    date->setDate(year,month,day);
+                }else {
+                    while (!x) {
+                        std::cout << "insert day of activity" << std::endl;
+                        std::cin >> day;
+                        std::cout << "insert month of activity" << std::endl;
+                        std::cin >> month;
+                        std::cout << "insert year of activity" << std::endl;
+                        std::cin >> year;
+                        x = date->setDate(year, month, day);
+                    };
+                    date->setDisabled(false);
+                }
             }else
                 date->setDisabled(true);
             do {
@@ -83,7 +97,7 @@ do {
             list.printAllActivities();
             std::string d;
             std::cout<<"write name of activity to remove"<<std::endl;
-            std::cin>>d;
+            std::getline(std::cin >> std::ws,d);
             list.removeActivity(d);
         }
            break;
@@ -92,7 +106,7 @@ do {
             list.printAllActivities();
             std::string d;
             std::cout<<"write name of activity to check"<<std::endl;
-            std::cin>>d;
+            std::getline(std::cin >> std::ws,d);
             list.addCheck(d);
         }
             break;
@@ -101,7 +115,7 @@ do {
             list.printAllActivities();
             std::string d;
             std::cout<<"write name of activity to uncheck"<<std::endl;
-            std::cin>>d;
+            std::getline(std::cin >> std::ws,d);
             list.removeCheck(d);
         }
             break;

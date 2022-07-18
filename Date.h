@@ -39,6 +39,9 @@ public:
     }
     Date(int y, int m, int d): disabled(false){ setDate(y,m,d);};
 
+    static int currentDay();
+    static int currentMonth();
+    static int currentYear();
 
 };
 

@@ -1758,7 +1758,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGB7Y8BqcS2dR0="
 							},
-							"name": "Date date"
+							"name": "Date date",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1766,7 +1767,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGB7Y8BqcS2dR0="
 							},
-							"name": "string description"
+							"name": "string description",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1774,7 +1776,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGB7Y8BqcS2dR0="
 							},
-							"name": "Hours hour"
+							"name": "Hours hour",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1782,7 +1785,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGB7Y8BqcS2dR0="
 							},
-							"name": "bool done"
+							"name": "bool done",
+							"type": ""
 						}
 					]
 				},
@@ -1800,7 +1804,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGB7Y8YWcTgD7c="
 							},
-							"name": "list listOfActivities"
+							"name": "list listOfActivities",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",

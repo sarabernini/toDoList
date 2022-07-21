@@ -12,38 +12,34 @@
 class ListOfActivity {
 
 private:
-    std::list<Activity*> listOfActivity;
-public:
-    const std::list<Activity *> &getListOfActivity() const;
+    std::list<Activity> listOfActivity;
+   std::fstream file;
 
-private:
-    std::fstream file;
-
-    void printActivity(const Activity* a);
+    void printActivity(const Activity& a) const;
 public:
 
     void writeActivityToFile();
-    void readActivityToFile();
-    void removeActivity(const std::string& description);
-    void addCheck(const std::string& description);
-    void removeCheck( const std::string& description);
-    void printAllActivities();
-    void printTodayActivities();
-    void addActivity(Activity& a);
+    void readActivityFromFile();
+    bool removeActivity(const std::string& description);
+    bool addCheck(const std::string& description);
+    bool removeCheck( const std::string& description);
+    void printAllActivities() const;
+    void printTodayActivities() const;
+    void addActivity(const Activity& a);
+    int numberOfActivity() const;
+    int numberOfActivityToDo() const;
 
-    Activity* findActivity(const std::string& description);
+    std::list<Activity>::iterator findActivity(const std::string& description) ;
 
 
     //constructor
     ListOfActivity(){
         file.open("list_of_activity.txt",std::ios::in | std::ios::app);
-        readActivityToFile();
+        readActivityFromFile();
     };
 
     //destructor
     virtual ~ListOfActivity() {
-        for(auto it : listOfActivity)
-            delete it;
         file.close();
     }
 

@@ -20,9 +20,9 @@ private:
 public:
 
     //getter
-    const std::string &getDescription() const;
-    const Hour &getHour() const;
-    const Date &getDate() const;
+    const std::string& getDescription() const ;
+    const Hour& getHour() const;
+    const Date& getDate() const;
     bool isChecked() const;
 
     //setter
@@ -35,7 +35,7 @@ public:
     Activity(std::string description, int h, int min, int y, int m, int d,bool checked=false):
             description(std::move(description)),checked(checked),hour(h, min),date(y,m,d){};
 
-    bool operator==(const Activity&right);
+    bool operator==(const Activity& right);
 
 };
 

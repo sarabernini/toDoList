@@ -8,24 +8,22 @@
 
 class Hour {
 private:
-    int hour;
-    int minute;
+    int hour{};
+    int minute{};
     bool disabled;
     bool valid=true;
-public:
-    bool isValid() const;
-
-    void setValid(bool v);
 
 public:
     //setter
-    void setHour(int h);
-    void setMinute(int m);
+    bool setHour(int h);
+    bool setMinute(int m);
     void setDisabled(bool d);
+    void setValid(bool v);
     //getter
     int getHour() const;
     int getMinute() const;
     bool isDisabled() const;
+    bool isValid() const;
     //constructor
     Hour(int hour, int minute):disabled(false){
         setHour(hour);

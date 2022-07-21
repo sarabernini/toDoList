@@ -5,27 +5,42 @@
 #include <iostream>
 #include "Hour.h"
 
-void Hour::setHour(int h) {
+bool Hour::setHour(const int h) {
+    bool i;
     if (h>=0 && h<24) {
         hour = h;
         disabled=false;
+        i=true;
     } else {
         valid = false;
         disabled=true;
-        std::cout << "hour need to be between 0-23" << std::endl;
+        i=false;
     }
+    return i;
 }
 
-void Hour::setMinute(int m) {
+bool Hour::setMinute(const int m) {
+    bool i;
     if (m>=0 && m<60) {
         minute = m;
         disabled=false;
+        i=true;
     }else {
         valid = false;
         disabled=true;
-        std::cout << "minute need to be between 0-59" << std::endl;
+        i=false;
     }
+    return i;
 }
+
+void Hour::setDisabled(const bool d) {
+    Hour::disabled = d;
+}
+
+void Hour::setValid(const bool v) {
+    Hour::valid = v;
+}
+
 
 int Hour::getHour() const {
     return hour;
@@ -39,16 +54,10 @@ bool Hour::isDisabled() const {
     return disabled;
 }
 
-void Hour::setDisabled(bool d) {
-    Hour::disabled = d;
-}
-
 bool Hour::isValid() const {
     return valid;
 }
 
-void Hour::setValid(bool v) {
-    Hour::valid = v;
-}
+
 
 

@@ -8,14 +8,14 @@
 
 class Date {
 private:
-    int day{};
-    int month{};
-    int year{};
+    int day;
+    int month;
+    int year;
     bool disabled;
     bool valid=false;
 
-    bool isLeapYear(int y);
-    bool isValidatedDate(int y, int m, int d);
+    bool isLeapYear(int y) const;
+    bool isValidatedDate(int y, int m, int d) const;
 
 public:
 
@@ -39,9 +39,9 @@ public:
     }
     Date(int y, int m, int d): disabled(false){ setDate(y,m,d);};
 
-    static int currentDay();
-    static int currentMonth();
-    static int currentYear();
+    static int currentDay() ;
+    static int currentMonth() ;
+    static int currentYear() ;
 
 };
 

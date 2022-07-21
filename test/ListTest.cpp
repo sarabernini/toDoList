@@ -6,19 +6,23 @@
 #include "gtest/gtest.h"
 #include"../ListOfActivity.h"
 
+
 TEST(ListTest,check){
-auto a=new Activity("testList",20,10,2026,8,20,false);
-auto b=new Activity("testList2",10,15,2027,9,21,true);
 ListOfActivity list;
-list.addActivity(*a);
-list.addActivity(*b);
+Activity a("testList");
+list.addActivity(a);
+    ASSERT_EQ(list.numberOfActivityToDo(),1);
+list.addCheck(a.getDescription());
+    ASSERT_EQ(list.numberOfActivityToDo(),0);
+}
 
-list.addCheck(a->getDescription());
-    ASSERT_EQ(a->isChecked(),true);
-list.removeCheck(b->getDescription());
-    ASSERT_EQ(b->isChecked(),false);
-
-
+TEST(ListTest,uncheck){
+    ListOfActivity list;
+    Activity a("testList",true);
+    list.addActivity(a);
+    ASSERT_EQ(list.numberOfActivityToDo(),0);
+    list.removeCheck(a.getDescription());
+    ASSERT_EQ(list.numberOfActivityToDo(),1);
 }
 
 TEST(ListTest,add){
@@ -26,24 +30,17 @@ TEST(ListTest,add){
     ListOfActivity list;
     bool c=false;
     list.addActivity(*a);
-    if(list.findActivity(a->getDescription())!= nullptr)
-        c=true;
 
-    ASSERT_TRUE(c);
-
+    ASSERT_EQ(list.numberOfActivity(),1);
 }
 
 TEST(ListTest,remove){
     auto* a= new Activity("testList",20,10,2026,8,20,true);
     ListOfActivity list;
-    bool c=false;
     list.addActivity(*a);
     list.removeActivity(a->getDescription());
-    if(list.findActivity(a->getDescription())==nullptr)
-         c=true;
 
-    ASSERT_TRUE(c);
-
+    ASSERT_EQ(list.numberOfActivity(),0);
 
 
 }

@@ -29,7 +29,7 @@ bool Activity::isChecked() const {
     return checked;
 }
 
-void Activity::setChecked(bool c) {
+void Activity::setChecked(const bool c)  {
     Activity::checked = c;
 }
 

@@ -34,13 +34,12 @@ bool Date::setDate(int y, int m, int d) {
     }else{
         valid=false;
         disabled=true;
-        std::cout<<"inserted date is not valid"<<std::endl;
         return false;
     }
 }
 
 //check if a year is leap
-bool Date::isLeapYear(int y) {
+bool Date::isLeapYear(const int y) const {
 
     if(y%4==0 && y%100!=0 || y%400==0)
         return true;
@@ -48,7 +47,7 @@ bool Date::isLeapYear(int y) {
         return false;
 }
 
-bool Date::isValidatedDate(int y, int m, int d) {
+bool Date::isValidatedDate(const int y, const int m, const int d) const{
     //data disabled
     if(disabled && y == 0 && m == 0 && d == 0)
         return true;
@@ -77,7 +76,7 @@ bool Date::isDisabled() const {
     return disabled;
 }
 
-void Date::setDisabled(bool d) {
+void Date::setDisabled(const bool d) {
     Date::disabled = d;
 }
 

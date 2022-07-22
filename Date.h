@@ -8,9 +8,9 @@
 
 class Date {
 private:
-    int day;
-    int month;
-    int year;
+    int day{};
+    int month{};
+    int year{};
     bool disabled;
     bool valid=false;
 

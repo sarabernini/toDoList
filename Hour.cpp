@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Hour.h"
 
-bool Hour::setHour(const int h) {
+bool Hour::setHour(int h) {
     bool i;
     if (h>=0 && h<24) {
         hour = h;
@@ -19,7 +19,7 @@ bool Hour::setHour(const int h) {
     return i;
 }
 
-bool Hour::setMinute(const int m) {
+bool Hour::setMinute(int m) {
     bool i;
     if (m>=0 && m<60) {
         minute = m;
@@ -33,11 +33,11 @@ bool Hour::setMinute(const int m) {
     return i;
 }
 
-void Hour::setDisabled(const bool d) {
+void Hour::setDisabled(bool d) {
     Hour::disabled = d;
 }
 
-void Hour::setValid(const bool v) {
+void Hour::setValid(bool v) {
     Hour::valid = v;
 }
 

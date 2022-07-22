@@ -20,6 +20,13 @@ int Date::getYear() const {
     return year;
 }
 
+bool Date::isDisabled() const {
+    return disabled;
+}
+
+bool Date::isValid() const {
+    return valid;
+}
 
 //this method checks if a date is legal then insert the date
 bool Date::setDate(int y, int m, int d) {
@@ -39,7 +46,7 @@ bool Date::setDate(int y, int m, int d) {
 }
 
 //check if a year is leap
-bool Date::isLeapYear(const int y) const {
+bool Date::isLeapYear(int y) const {
 
     if(y%4==0 && y%100!=0 || y%400==0)
         return true;
@@ -47,7 +54,7 @@ bool Date::isLeapYear(const int y) const {
         return false;
 }
 
-bool Date::isValidatedDate(const int y, const int m, const int d) const{
+bool Date::isValidatedDate(int y, int m, int d) const{
     //data disabled
     if(disabled && y == 0 && m == 0 && d == 0)
         return true;
@@ -72,16 +79,8 @@ bool Date::isValidatedDate(const int y, const int m, const int d) const{
     return false;
 }
 
-bool Date::isDisabled() const {
-    return disabled;
-}
-
-void Date::setDisabled(const bool d) {
+void Date::setDisabled( bool d) {
     Date::disabled = d;
-}
-
-bool Date::isValid() const {
-    return valid;
 }
 
 int Date::currentDay() {
